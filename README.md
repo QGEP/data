@@ -8,4 +8,4 @@ You can download the latest demo dataset [here](https://github.com/QGEP/data/arc
 
 ## Never push to this branch manually!
 
-It is updated automatically on changes to the[QGEP repository](https://github.com/QGEP/QGEP/).
+It is updated automatically on changes to the [QGEP repository](https://github.com/QGEP/QGEP/).
