@@ -1,5 +1,7 @@
 # Data
 
-Contains test data and demo data for QGEP.
+This repository contains testdata and demodata for QGEP. The current branch contains **test data**
 
-**You should never have to push manually to this repository. It will be updated automatically!**
+# Download demodata
+
+You can download the latest demo dataset [here](https://github.com/QGEP/data/archive/demodata.zip
