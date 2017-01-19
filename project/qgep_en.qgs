@@ -268,6 +268,9 @@
     </layer-tree-group>
     <layer-tree-group expanded="0" checked="Qt::Checked" name="Cadastral Data">
       <customproperties/>
+      <layer-tree-layer expanded="1" checked="Qt::Checked" id="OSM20170119204530981" name="OSM">
+        <customproperties/>
+      </layer-tree-layer>
     </layer-tree-group>
   </layer-tree-group>
   <relations>
@@ -405,6 +408,7 @@
       <layer_coordinate_transform destAuthId="EPSG:21781" srcAuthId="EPSG:21781" srcDatumTransform="-1" destDatumTransform="-1" layerid="vw_reach20140925140846596"/>
       <layer_coordinate_transform destAuthId="EPSG:21781" srcAuthId="EPSG:21781" srcDatumTransform="-1" destDatumTransform="-1" layerid="vw_reach20141013202956655"/>
       <layer_coordinate_transform destAuthId="EPSG:21781" srcAuthId="EPSG:21781" srcDatumTransform="-1" destDatumTransform="-1" layerid="ownership__realestate_posnumber20150211112947328"/>
+      <layer_coordinate_transform destAuthId="EPSG:21781" srcAuthId="EPSG:3857" srcDatumTransform="-1" destDatumTransform="-1" layerid="OSM20170119204530981"/>
       <layer_coordinate_transform destAuthId="EPSG:21781" srcAuthId="EPSG:21781" srcDatumTransform="-1" destDatumTransform="-1" layerid="od_reach_point20140822215511891"/>
       <layer_coordinate_transform destAuthId="EPSG:21781" srcAuthId="EPSG:21781" srcDatumTransform="-1" destDatumTransform="-1" layerid="territorial_boundaries__municipal_boundary20150211112947357"/>
       <layer_coordinate_transform destAuthId="EPSG:21781" srcAuthId="EPSG:21781" srcDatumTransform="-1" destDatumTransform="-1" layerid="vw_manhole20141013203257827"/>
@@ -500,6 +504,7 @@
       <item>vl_data_media_kind</item>
       <item>vl_file_class</item>
       <item>vl_file_kind</item>
+      <item>OSM20170119204530981</item>
     </custom-order>
   </layer-tree-canvas>
   <legend updateDrawingOrder="true">
@@ -878,9 +883,61 @@
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendgroup open="false" checked="Qt::Checked" name="Cadastral Data"/>
+    <legendgroup open="false" checked="Qt::Checked" name="Cadastral Data">
+      <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="OSM" showFeatureCount="0">
+        <filegroup open="true" hidden="false">
+          <legendlayerfile isInOverview="0" layerid="OSM20170119204530981" visible="1"/>
+        </filegroup>
+      </legendlayer>
+    </legendgroup>
   </legend>
   <projectlayers>
+    <maplayer minimumScale="inf" maximumScale="1e+08" type="raster" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>-20037508.34278924390673637</xmin>
+        <ymin>-20037508.34278925508260727</ymin>
+        <xmax>20037508.34278924390673637</xmax>
+        <ymax>20037508.34278924390673637</ymax>
+      </extent>
+      <id>OSM20170119204530981</id>
+      <datasource>type=xyz&amp;url=http://tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>OSM</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+          <srsid>3857</srsid>
+          <srid>3857</srid>
+          <authid>EPSG:3857</authid>
+          <description>WGS 84 / Pseudo Mercator</description>
+          <projectionacronym>merc</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <customproperties>
+        <property key="embeddedWidgets/count" value="0"/>
+        <property key="identify/format" value="Undefined"/>
+      </customproperties>
+      <provider>wms</provider>
+      <noData>
+        <noDataList bandNo="1" useSrcNoData="0"/>
+      </noData>
+      <map-layer-style-manager current="">
+        <map-layer-style name=""/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer opacity="1" alphaBand="0" band="1" type="singlebandcolordata">
+          <rasterTransparency/>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeGreen="128" colorizeOn="0" colorizeRed="255" colorizeBlue="128" grayscaleMode="0" saturation="0" colorizeStrength="100"/>
+        <rasterresampler maxOversampling="2" zoomedOutResampler="bilinear" zoomedInResampler="bilinear"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
     <maplayer minimumScale="100000" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>od_file20160921105557083</id>
       <datasource>service='pg_qgep' key='obj_id' table="qgep"."od_file" sql=</datasource>
@@ -910,18 +967,6 @@
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="class" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="kind" expression=""/>
-        <default field="object" expression=""/>
-        <default field="path_relative" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -1016,6 +1061,18 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="class" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="kind" expression=""/>
+        <default field="object" expression=""/>
+        <default field="path_relative" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>od_organisation20160212172933583</id>
@@ -1043,16 +1100,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="uid" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="old_obj_id" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -1078,9 +1125,6 @@ def my_form_open(dialog, layer, feature):
         <edittype widgetv2type="TextEdit" name="fk_provider">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
-        <edittype widgetv2type="TextEdit" name="old_obj_id">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
       </edittypes>
       <annotationform>.</annotationform>
       <aliases>
@@ -1091,7 +1135,6 @@ def my_form_open(dialog, layer, feature):
         <alias field="last_modification" index="4" name=""/>
         <alias field="fk_dataowner" index="5" name=""/>
         <alias field="fk_provider" index="6" name=""/>
-        <alias field="old_obj_id" index="7" name=""/>
       </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -1121,6 +1164,15 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="uid" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>od_pipe_profile</id>
@@ -1147,16 +1199,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="height_width_ratio" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="profile_type" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -1215,8 +1257,18 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="height_width_ratio" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="profile_type" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+      </defaults>
     </maplayer>
-    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="5001" simplifyDrawingHints="1" readOnly="0" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="1" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="5001" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="1" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
       <id>od_wastewater_structure</id>
       <datasource>service='pg_qgep' key='obj_id' estimatedmetadata=true srid=21781 type=CurvePolygon table="qgep"."od_wastewater_structure" (detail_geometry_geometry) sql=</datasource>
       <keywordList>
@@ -1240,39 +1292,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="accessibility" expression=""/>
-        <default field="contract_section" expression=""/>
-        <default field="detail_geometry3d_geometry" expression=""/>
-        <default field="financing" expression=""/>
-        <default field="gross_costs" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="inspection_interval" expression=""/>
-        <default field="location_name" expression=""/>
-        <default field="records" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="renovation_necessity" expression=""/>
-        <default field="replacement_value" expression=""/>
-        <default field="rv_base_year" expression=""/>
-        <default field="rv_construction_type" expression=""/>
-        <default field="status" expression=""/>
-        <default field="structure_condition" expression=""/>
-        <default field="subsidies" expression=""/>
-        <default field="year_of_construction" expression=""/>
-        <default field="year_of_replacement" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="fk_owner" expression=""/>
-        <default field="fk_operator" expression=""/>
-        <default field="_usage_current" expression=""/>
-        <default field="_function_hierarchic" expression=""/>
-        <default field="_label" expression=""/>
-        <default field="fk_main_cover" expression=""/>
-        <default field="_depth" expression=""/>
-        <default field="old_obj_id" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -1364,10 +1383,7 @@ def my_form_open(dialog, layer, feature):
         <edittype widgetv2type="TextEdit" name="fk_main_cover">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
-        <edittype widgetv2type="TextEdit" name="_depth">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="old_obj_id">
+        <edittype widgetv2type="TextEdit" name="_old_obj_id">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
       </edittypes>
@@ -1637,8 +1653,7 @@ def my_form_open(dialog, layer, feature):
         <alias field="_function_hierarchic" index="26" name=""/>
         <alias field="_label" index="27" name=""/>
         <alias field="fk_main_cover" index="28" name=""/>
-        <alias field="_depth" index="29" name=""/>
-        <alias field="old_obj_id" index="30" name=""/>
+        <alias field="_old_obj_id" index="29" name=""/>
       </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -1658,6 +1673,38 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="accessibility" expression=""/>
+        <default field="contract_section" expression=""/>
+        <default field="detail_geometry3d_geometry" expression=""/>
+        <default field="financing" expression=""/>
+        <default field="gross_costs" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="inspection_interval" expression=""/>
+        <default field="location_name" expression=""/>
+        <default field="records" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="renovation_necessity" expression=""/>
+        <default field="replacement_value" expression=""/>
+        <default field="rv_base_year" expression=""/>
+        <default field="rv_construction_type" expression=""/>
+        <default field="status" expression=""/>
+        <default field="structure_condition" expression=""/>
+        <default field="subsidies" expression=""/>
+        <default field="year_of_construction" expression=""/>
+        <default field="year_of_replacement" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="fk_owner" expression=""/>
+        <default field="fk_operator" expression=""/>
+        <default field="_usage_current" expression=""/>
+        <default field="_function_hierarchic" expression=""/>
+        <default field="_label" expression=""/>
+        <default field="fk_main_cover" expression=""/>
+        <default field="_old_obj_id" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>re_maintenance_event_wastewater_structure</id>
@@ -1689,11 +1736,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="fk_wastewater_structure" expression=""/>
-        <default field="fk_maintenance_event" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -1753,6 +1795,11 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="fk_wastewater_structure" expression=""/>
+        <default field="fk_maintenance_event" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_access_aid_kind</id>
@@ -1779,19 +1826,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -1862,6 +1896,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_backflow_prevention_kind</id>
@@ -1888,19 +1935,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -1971,6 +2005,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_channel_bedding_encasement</id>
@@ -1997,19 +2044,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -2080,6 +2114,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_channel_connection_type</id>
@@ -2106,19 +2153,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -2189,6 +2223,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_channel_function_hierarchic</id>
@@ -2215,20 +2262,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="order_fct_hierarchic" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -2303,6 +2336,20 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="order_fct_hierarchic" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_channel_function_hydraulic</id>
@@ -2329,19 +2376,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -2412,6 +2446,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_channel_usage_current</id>
@@ -2438,20 +2485,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="order_usage_current" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -2526,6 +2559,20 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="order_usage_current" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_channel_usage_planned</id>
@@ -2552,19 +2599,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -2635,6 +2669,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="-4.65661e-10" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_cover_cover_shape</id>
@@ -2661,19 +2708,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -2744,6 +2778,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="-4.65661e-10" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_cover_fastening</id>
@@ -2770,19 +2817,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -2853,6 +2887,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="-4.65661e-10" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_cover_material</id>
@@ -2879,19 +2926,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -2962,6 +2996,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_cover_positional_accuracy20151117153235900</id>
@@ -2988,19 +3035,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -3071,6 +3105,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="-4.65661e-10" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_cover_sludge_bucket</id>
@@ -3097,19 +3144,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -3180,6 +3214,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="-4.65661e-10" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_cover_venting</id>
@@ -3206,19 +3253,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -3289,6 +3323,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_damage_channel_channel_damage_code</id>
@@ -3315,19 +3362,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -3398,6 +3432,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_damage_connection</id>
@@ -3424,19 +3471,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -3507,6 +3541,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_damage_manhole_manhole_damage_code</id>
@@ -3533,19 +3580,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -3616,6 +3650,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_damage_manhole_manhole_shaft_area</id>
@@ -3642,19 +3689,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -3725,6 +3759,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_damage_single_damage_class</id>
@@ -3751,19 +3798,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -3834,6 +3868,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_data_media_kind</id>
@@ -3860,19 +3907,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -3943,6 +3977,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_discharge_point_relevance</id>
@@ -3969,19 +4016,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -4052,6 +4086,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_file_class</id>
@@ -4078,19 +4125,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -4161,6 +4195,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_file_kind</id>
@@ -4187,19 +4234,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -4270,6 +4304,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_maintenance_event_kind</id>
@@ -4296,19 +4343,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -4379,6 +4413,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_maintenance_event_status</id>
@@ -4405,19 +4452,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -4488,6 +4522,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="-4.65661e-10" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_manhole_function</id>
@@ -4514,19 +4561,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -4597,6 +4631,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_manhole_material20151117174216343</id>
@@ -4623,19 +4670,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -4706,6 +4740,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_manhole_surface_inflow20151117174216393</id>
@@ -4732,19 +4779,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -4815,6 +4849,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_pipe_profile_profile_type</id>
@@ -4841,19 +4888,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -4924,6 +4958,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_reach_elevation_determination</id>
@@ -4950,19 +4997,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -5033,6 +5067,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_reach_horizontal_positioning</id>
@@ -5059,19 +5106,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -5142,6 +5176,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_reach_inside_coating</id>
@@ -5168,19 +5215,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -5251,6 +5285,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="-4.65661e-10" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_reach_material</id>
@@ -5277,19 +5324,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -5360,6 +5394,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_reach_point_elevation_accuracy</id>
@@ -5386,19 +5433,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -5469,6 +5503,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_reach_point_outlet_shape</id>
@@ -5495,19 +5542,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -5578,6 +5612,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_reach_reliner_material</id>
@@ -5604,19 +5651,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -5687,6 +5721,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_reach_relining_construction</id>
@@ -5713,19 +5760,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -5796,6 +5830,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_reach_relining_kind</id>
@@ -5822,19 +5869,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -5905,6 +5939,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_special_structure_bypass</id>
@@ -5931,19 +5978,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -6014,6 +6048,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_special_structure_function</id>
@@ -6040,19 +6087,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -6123,6 +6157,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_special_structure_stormwater_tank_arrangement</id>
@@ -6149,19 +6196,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -6232,6 +6266,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_structure_part_renovation_demand</id>
@@ -6262,19 +6309,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -6372,6 +6406,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_wastewater_structure_accessibility</id>
@@ -6398,19 +6445,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -6481,6 +6515,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_wastewater_structure_financing</id>
@@ -6507,19 +6554,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -6590,6 +6624,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_wastewater_structure_renovation_necessity</id>
@@ -6616,19 +6663,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -6699,6 +6733,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_wastewater_structure_rv_construction_type</id>
@@ -6725,19 +6772,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -6808,6 +6842,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_wastewater_structure_status</id>
@@ -6834,19 +6881,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -6917,6 +6951,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vl_wastewater_structure_structure_condition</id>
@@ -6943,19 +6990,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="code" expression=""/>
-        <default field="vsacode" expression=""/>
-        <default field="value_en" expression=""/>
-        <default field="value_de" expression=""/>
-        <default field="value_fr" expression=""/>
-        <default field="abbr_en" expression=""/>
-        <default field="abbr_de" expression=""/>
-        <default field="abbr_fr" expression=""/>
-        <default field="active" expression=""/>
-        <default field="value_ro" expression=""/>
-        <default field="abbr_ro" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -7026,6 +7060,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="code" expression=""/>
+        <default field="vsacode" expression=""/>
+        <default field="value_en" expression=""/>
+        <default field="value_de" expression=""/>
+        <default field="value_fr" expression=""/>
+        <default field="abbr_en" expression=""/>
+        <default field="abbr_de" expression=""/>
+        <default field="abbr_fr" expression=""/>
+        <default field="active" expression=""/>
+        <default field="value_ro" expression=""/>
+        <default field="abbr_ro" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="100000" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vw_access_aid</id>
@@ -7056,17 +7103,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="kind" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="renovation_demand" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_wastewater_structure" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -7156,6 +7192,17 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="kind" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="renovation_demand" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_wastewater_structure" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vw_backflow_prevention</id>
@@ -7186,19 +7233,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="gross_costs" expression=""/>
-        <default field="kind" expression=""/>
-        <default field="year_of_replacement" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="renovation_demand" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_wastewater_structure" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -7298,6 +7332,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="gross_costs" expression=""/>
+        <default field="kind" expression=""/>
+        <default field="year_of_replacement" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="renovation_demand" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_wastewater_structure" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="100000" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vw_benching</id>
@@ -7328,17 +7375,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="kind" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="renovation_demand" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_wastewater_structure" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -7428,6 +7464,17 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="kind" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="renovation_demand" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_wastewater_structure" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="-4.65661e-10" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vw_channel_</id>
@@ -7454,42 +7501,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="bedding_encasement" expression=""/>
-        <default field="connection_type" expression=""/>
-        <default field="function_hierarchic" expression=""/>
-        <default field="function_hydraulic" expression=""/>
-        <default field="jetting_interval" expression=""/>
-        <default field="pipe_length" expression=""/>
-        <default field="usage_current" expression=""/>
-        <default field="usage_planned" expression=""/>
-        <default field="accessibility" expression=""/>
-        <default field="contract_section" expression=""/>
-        <default field="detail_geometry_geometry" expression=""/>
-        <default field="detail_geometry3d_geometry" expression=""/>
-        <default field="financing" expression=""/>
-        <default field="gross_costs" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="inspection_interval" expression=""/>
-        <default field="location_name" expression=""/>
-        <default field="records" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="renovation_necessity" expression=""/>
-        <default field="replacement_value" expression=""/>
-        <default field="rv_base_year" expression=""/>
-        <default field="rv_construction_type" expression=""/>
-        <default field="status" expression=""/>
-        <default field="structure_condition" expression=""/>
-        <default field="subsidies" expression=""/>
-        <default field="year_of_construction" expression=""/>
-        <default field="year_of_replacement" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_owner" expression=""/>
-        <default field="fk_operator" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -7656,8 +7667,44 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="bedding_encasement" expression=""/>
+        <default field="connection_type" expression=""/>
+        <default field="function_hierarchic" expression=""/>
+        <default field="function_hydraulic" expression=""/>
+        <default field="jetting_interval" expression=""/>
+        <default field="pipe_length" expression=""/>
+        <default field="usage_current" expression=""/>
+        <default field="usage_planned" expression=""/>
+        <default field="accessibility" expression=""/>
+        <default field="contract_section" expression=""/>
+        <default field="detail_geometry_geometry" expression=""/>
+        <default field="detail_geometry3d_geometry" expression=""/>
+        <default field="financing" expression=""/>
+        <default field="gross_costs" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="inspection_interval" expression=""/>
+        <default field="location_name" expression=""/>
+        <default field="records" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="renovation_necessity" expression=""/>
+        <default field="replacement_value" expression=""/>
+        <default field="rv_base_year" expression=""/>
+        <default field="rv_construction_type" expression=""/>
+        <default field="status" expression=""/>
+        <default field="structure_condition" expression=""/>
+        <default field="subsidies" expression=""/>
+        <default field="year_of_construction" expression=""/>
+        <default field="year_of_replacement" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_owner" expression=""/>
+        <default field="fk_operator" expression=""/>
+      </defaults>
     </maplayer>
-    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1000" simplifyDrawingHints="0" readOnly="0" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="1" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1000" simplifyDrawingHints="0" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="1" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
       <id>vw_cover___</id>
       <datasource>service='pg_qgep' key='obj_id' estimatedmetadata=true srid=21781 type=Point table="qgep"."vw_cover" (situation_geometry) sql=</datasource>
       <keywordList>
@@ -7681,25 +7728,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="brand" expression=""/>
-        <default field="cover_shape" expression=""/>
-        <default field="diameter" expression=""/>
-        <default field="fastening" expression=""/>
-        <default field="level" expression=""/>
-        <default field="material" expression=""/>
-        <default field="positional_accuracy" expression=""/>
-        <default field="sludge_bucket" expression=""/>
-        <default field="venting" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="renovation_demand" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_wastewater_structure" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -7711,6 +7739,9 @@ def my_form_open(dialog, layer, feature):
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="cover_shape">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="diameter">
@@ -8026,20 +8057,21 @@ def my_form_open(dialog, layer, feature):
         <alias field="obj_id" index="0" name=""/>
         <alias field="brand" index="1" name=""/>
         <alias field="cover_shape" index="2" name=""/>
-        <alias field="diameter" index="3" name=""/>
-        <alias field="fastening" index="4" name=""/>
-        <alias field="level" index="5" name=""/>
-        <alias field="material" index="6" name=""/>
-        <alias field="positional_accuracy" index="7" name=""/>
-        <alias field="sludge_bucket" index="8" name=""/>
-        <alias field="venting" index="9" name=""/>
-        <alias field="identifier" index="10" name=""/>
-        <alias field="remark" index="11" name=""/>
-        <alias field="renovation_demand" index="12" name=""/>
-        <alias field="fk_dataowner" index="13" name=""/>
-        <alias field="fk_provider" index="14" name=""/>
-        <alias field="last_modification" index="15" name=""/>
-        <alias field="fk_wastewater_structure" index="16" name=""/>
+        <alias field="depth" index="3" name=""/>
+        <alias field="diameter" index="4" name=""/>
+        <alias field="fastening" index="5" name=""/>
+        <alias field="level" index="6" name=""/>
+        <alias field="material" index="7" name=""/>
+        <alias field="positional_accuracy" index="8" name=""/>
+        <alias field="sludge_bucket" index="9" name=""/>
+        <alias field="venting" index="10" name=""/>
+        <alias field="identifier" index="11" name=""/>
+        <alias field="remark" index="12" name=""/>
+        <alias field="renovation_demand" index="13" name=""/>
+        <alias field="fk_dataowner" index="14" name=""/>
+        <alias field="fk_provider" index="15" name=""/>
+        <alias field="last_modification" index="16" name=""/>
+        <alias field="fk_wastewater_structure" index="17" name=""/>
       </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -8095,6 +8127,26 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="brand" expression=""/>
+        <default field="cover_shape" expression=""/>
+        <default field="depth" expression=""/>
+        <default field="diameter" expression=""/>
+        <default field="fastening" expression=""/>
+        <default field="level" expression=""/>
+        <default field="material" expression=""/>
+        <default field="positional_accuracy" expression=""/>
+        <default field="sludge_bucket" expression=""/>
+        <default field="venting" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="renovation_demand" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_wastewater_structure" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="100000" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vw_dryweather_downspout</id>
@@ -8125,17 +8177,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="diameter" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="renovation_demand" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_wastewater_structure" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -8225,6 +8266,17 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="diameter" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="renovation_demand" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_wastewater_structure" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="100000" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vw_dryweather_flume</id>
@@ -8255,17 +8307,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="material" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="renovation_demand" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_wastewater_structure" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -8355,8 +8396,19 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="material" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="renovation_demand" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_wastewater_structure" expression=""/>
+      </defaults>
     </maplayer>
-    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" readOnly="0" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
       <id>vw_network_node20150607120529398</id>
       <datasource>service='pg_qgep' key='gid' estimatedmetadata=true srid=21781 type=Point table="qgep"."vw_network_node" (situation_geometry) sql=</datasource>
       <keywordList>
@@ -8380,18 +8432,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="gid" expression=""/>
-        <default field="obj_id" expression=""/>
-        <default field="type" expression=""/>
-        <default field="node_type" expression=""/>
-        <default field="level" expression=""/>
-        <default field="usage_current" expression=""/>
-        <default field="cover_level" expression=""/>
-        <default field="backflow_level" expression=""/>
-        <default field="description" expression=""/>
-        <default field="detail_geometry" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -8529,8 +8569,20 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="gid" expression=""/>
+        <default field="obj_id" expression=""/>
+        <default field="type" expression=""/>
+        <default field="node_type" expression=""/>
+        <default field="level" expression=""/>
+        <default field="usage_current" expression=""/>
+        <default field="cover_level" expression=""/>
+        <default field="backflow_level" expression=""/>
+        <default field="description" expression=""/>
+        <default field="detail_geometry" expression=""/>
+      </defaults>
     </maplayer>
-    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" readOnly="0" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Line" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Line" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
       <id>vw_network_segment20150607120529381</id>
       <datasource>service='pg_qgep' key='gid' estimatedmetadata=true srid=21781 type=CompoundCurve table="qgep"."vw_network_segment" (progression_geometry) sql=</datasource>
       <keywordList>
@@ -8554,24 +8606,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="gid" expression=""/>
-        <default field="obj_id" expression=""/>
-        <default field="type" expression=""/>
-        <default field="clear_height" expression=""/>
-        <default field="length_calc" expression=""/>
-        <default field="length_full" expression=""/>
-        <default field="from_obj_id" expression=""/>
-        <default field="to_obj_id" expression=""/>
-        <default field="from_obj_id_interpolate" expression=""/>
-        <default field="to_obj_id_interpolate" expression=""/>
-        <default field="from_pos" expression=""/>
-        <default field="to_pos" expression=""/>
-        <default field="bottom_level" expression=""/>
-        <default field="usage_current" expression=""/>
-        <default field="material" expression=""/>
-        <default field="detail_geometry" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -8730,6 +8764,24 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="gid" expression=""/>
+        <default field="obj_id" expression=""/>
+        <default field="type" expression=""/>
+        <default field="clear_height" expression=""/>
+        <default field="length_calc" expression=""/>
+        <default field="length_full" expression=""/>
+        <default field="from_obj_id" expression=""/>
+        <default field="to_obj_id" expression=""/>
+        <default field="from_obj_id_interpolate" expression=""/>
+        <default field="to_obj_id_interpolate" expression=""/>
+        <default field="from_pos" expression=""/>
+        <default field="to_pos" expression=""/>
+        <default field="bottom_level" expression=""/>
+        <default field="usage_current" expression=""/>
+        <default field="material" expression=""/>
+        <default field="detail_geometry" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="100000" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vw_qgep_damage</id>
@@ -8760,28 +8812,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="damage_type" expression=""/>
-        <default field="obj_id" expression=""/>
-        <default field="comments" expression=""/>
-        <default field="connection" expression=""/>
-        <default field="damage_begin" expression=""/>
-        <default field="damage_end" expression=""/>
-        <default field="damage_reach" expression=""/>
-        <default field="distance" expression=""/>
-        <default field="quantification1" expression=""/>
-        <default field="quantification2" expression=""/>
-        <default field="single_damage_class" expression=""/>
-        <default field="video_counter" expression=""/>
-        <default field="view_parameters" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="fk_examination" expression=""/>
-        <default field="manhole_damage_code" expression=""/>
-        <default field="manhole_shaft_area" expression=""/>
-        <default field="channel_damage_code" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -8949,6 +8979,28 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="damage_type" expression=""/>
+        <default field="obj_id" expression=""/>
+        <default field="comments" expression=""/>
+        <default field="connection" expression=""/>
+        <default field="damage_begin" expression=""/>
+        <default field="damage_end" expression=""/>
+        <default field="damage_reach" expression=""/>
+        <default field="distance" expression=""/>
+        <default field="quantification1" expression=""/>
+        <default field="quantification2" expression=""/>
+        <default field="single_damage_class" expression=""/>
+        <default field="video_counter" expression=""/>
+        <default field="view_parameters" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="fk_examination" expression=""/>
+        <default field="manhole_damage_code" expression=""/>
+        <default field="manhole_shaft_area" expression=""/>
+        <default field="channel_damage_code" expression=""/>
+      </defaults>
     </maplayer>
     <maplayer minimumScale="100000" maximumScale="1e+08" readOnly="0" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
       <id>vw_qgep_maintenance</id>
@@ -8979,36 +9031,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="maintenance_type" expression=""/>
-        <default field="obj_id" expression=""/>
-        <default field="base_data" expression=""/>
-        <default field="cost" expression=""/>
-        <default field="data_details" expression=""/>
-        <default field="duration" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="kind" expression=""/>
-        <default field="operator" expression=""/>
-        <default field="reason" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="result" expression=""/>
-        <default field="status" expression=""/>
-        <default field="time_point" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="fk_operating_company" expression=""/>
-        <default field="active_zone" expression=""/>
-        <default field="equipment" expression=""/>
-        <default field="from_point_identifier" expression=""/>
-        <default field="inspected_length" expression=""/>
-        <default field="recording_type" expression=""/>
-        <default field="to_point_identifier" expression=""/>
-        <default field="vehicle" expression=""/>
-        <default field="videonumber" expression=""/>
-        <default field="weather" expression=""/>
-        <default field="fk_reach_point" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -9237,8 +9259,38 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="maintenance_type" expression=""/>
+        <default field="obj_id" expression=""/>
+        <default field="base_data" expression=""/>
+        <default field="cost" expression=""/>
+        <default field="data_details" expression=""/>
+        <default field="duration" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="kind" expression=""/>
+        <default field="operator" expression=""/>
+        <default field="reason" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="result" expression=""/>
+        <default field="status" expression=""/>
+        <default field="time_point" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="fk_operating_company" expression=""/>
+        <default field="active_zone" expression=""/>
+        <default field="equipment" expression=""/>
+        <default field="from_point_identifier" expression=""/>
+        <default field="inspected_length" expression=""/>
+        <default field="recording_type" expression=""/>
+        <default field="to_point_identifier" expression=""/>
+        <default field="vehicle" expression=""/>
+        <default field="videonumber" expression=""/>
+        <default field="weather" expression=""/>
+        <default field="fk_reach_point" expression=""/>
+      </defaults>
     </maplayer>
-    <maplayer simplifyAlgorithm="0" minimumScale="100000" maximumScale="1e+08" simplifyDrawingHints="1" readOnly="0" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Line" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="100000" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Line" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
       <extent>
         <xmin>745305.58999999996740371</xmin>
         <ymin>258374.23000000001047738</ymin>
@@ -9276,88 +9328,6 @@ def my_form_open(dialog, layer, feature):
       </vectorjoins>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="clear_height" expression=""/>
-        <default field="width" expression=""/>
-        <default field="coefficient_of_friction" expression=""/>
-        <default field="elevation_determination" expression=""/>
-        <default field="horizontal_positioning" expression=""/>
-        <default field="inside_coating" expression=""/>
-        <default field="length_effective" expression=""/>
-        <default field="slope_per_mill" expression=""/>
-        <default field="material" expression=""/>
-        <default field="progression3d_geometry" expression=""/>
-        <default field="reliner_material" expression=""/>
-        <default field="reliner_nominal_size" expression=""/>
-        <default field="relining_construction" expression=""/>
-        <default field="relining_kind" expression=""/>
-        <default field="ring_stiffness" expression=""/>
-        <default field="slope_building_plan" expression=""/>
-        <default field="wall_roughness" expression=""/>
-        <default field="fk_pipe_profile" expression=""/>
-        <default field="bedding_encasement" expression=""/>
-        <default field="function_hierarchic" expression=""/>
-        <default field="connection_type" expression=""/>
-        <default field="function_hydraulic" expression=""/>
-        <default field="jetting_interval" expression=""/>
-        <default field="pipe_length" expression=""/>
-        <default field="usage_current" expression=""/>
-        <default field="usage_planned" expression=""/>
-        <default field="ws_obj_id" expression=""/>
-        <default field="accessibility" expression=""/>
-        <default field="contract_section" expression=""/>
-        <default field="financing" expression=""/>
-        <default field="gross_costs" expression=""/>
-        <default field="inspection_interval" expression=""/>
-        <default field="location_name" expression=""/>
-        <default field="records" expression=""/>
-        <default field="renovation_necessity" expression=""/>
-        <default field="replacement_value" expression=""/>
-        <default field="rv_base_year" expression=""/>
-        <default field="rv_construction_type" expression=""/>
-        <default field="status" expression=""/>
-        <default field="structure_condition" expression=""/>
-        <default field="subsidies" expression=""/>
-        <default field="year_of_construction" expression=""/>
-        <default field="year_of_replacement" expression=""/>
-        <default field="fk_owner" expression=""/>
-        <default field="fk_operator" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="fk_wastewater_structure" expression=""/>
-        <default field="rp_from_obj_id" expression=""/>
-        <default field="rp_from_elevation_accuracy" expression=""/>
-        <default field="rp_from_identifier" expression=""/>
-        <default field="rp_from_level" expression=""/>
-        <default field="rp_from_outlet_shape" expression=""/>
-        <default field="rp_from_position_of_connection" expression=""/>
-        <default field="rp_from_remark" expression=""/>
-        <default field="rp_from_last_modification" expression=""/>
-        <default field="rp_from_fk_dataowner" expression=""/>
-        <default field="rp_from_fk_provider" expression=""/>
-        <default field="rp_from_fk_wastewater_networkelement" expression=""/>
-        <default field="rp_to_obj_id" expression=""/>
-        <default field="rp_to_elevation_accuracy" expression=""/>
-        <default field="rp_to_identifier" expression=""/>
-        <default field="rp_to_level" expression=""/>
-        <default field="rp_to_outlet_shape" expression=""/>
-        <default field="rp_to_position_of_connection" expression=""/>
-        <default field="rp_to_remark" expression=""/>
-        <default field="rp_to_last_modification" expression=""/>
-        <default field="rp_to_fk_dataowner" expression=""/>
-        <default field="rp_to_fk_provider" expression=""/>
-        <default field="rp_to_fk_wastewater_networkelement" expression=""/>
-        <default field="me_obj_id" expression=""/>
-        <default field="me_active_zone" expression=""/>
-        <default field="me_identifier" expression=""/>
-        <default field="material_abbr_en" expression=""/>
-        <default field="material_abbr_de" expression=""/>
-        <default field="material_abbr_fr" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
         <map-layer-style name="Maintenance Event Zones">
@@ -12184,8 +12154,90 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="clear_height" expression=""/>
+        <default field="width" expression=""/>
+        <default field="coefficient_of_friction" expression=""/>
+        <default field="elevation_determination" expression=""/>
+        <default field="horizontal_positioning" expression=""/>
+        <default field="inside_coating" expression=""/>
+        <default field="length_effective" expression=""/>
+        <default field="slope_per_mill" expression=""/>
+        <default field="material" expression=""/>
+        <default field="progression3d_geometry" expression=""/>
+        <default field="reliner_material" expression=""/>
+        <default field="reliner_nominal_size" expression=""/>
+        <default field="relining_construction" expression=""/>
+        <default field="relining_kind" expression=""/>
+        <default field="ring_stiffness" expression=""/>
+        <default field="slope_building_plan" expression=""/>
+        <default field="wall_roughness" expression=""/>
+        <default field="fk_pipe_profile" expression=""/>
+        <default field="bedding_encasement" expression=""/>
+        <default field="function_hierarchic" expression=""/>
+        <default field="connection_type" expression=""/>
+        <default field="function_hydraulic" expression=""/>
+        <default field="jetting_interval" expression=""/>
+        <default field="pipe_length" expression=""/>
+        <default field="usage_current" expression=""/>
+        <default field="usage_planned" expression=""/>
+        <default field="ws_obj_id" expression=""/>
+        <default field="accessibility" expression=""/>
+        <default field="contract_section" expression=""/>
+        <default field="financing" expression=""/>
+        <default field="gross_costs" expression=""/>
+        <default field="inspection_interval" expression=""/>
+        <default field="location_name" expression=""/>
+        <default field="records" expression=""/>
+        <default field="renovation_necessity" expression=""/>
+        <default field="replacement_value" expression=""/>
+        <default field="rv_base_year" expression=""/>
+        <default field="rv_construction_type" expression=""/>
+        <default field="status" expression=""/>
+        <default field="structure_condition" expression=""/>
+        <default field="subsidies" expression=""/>
+        <default field="year_of_construction" expression=""/>
+        <default field="year_of_replacement" expression=""/>
+        <default field="fk_owner" expression=""/>
+        <default field="fk_operator" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="fk_wastewater_structure" expression=""/>
+        <default field="rp_from_obj_id" expression=""/>
+        <default field="rp_from_elevation_accuracy" expression=""/>
+        <default field="rp_from_identifier" expression=""/>
+        <default field="rp_from_level" expression=""/>
+        <default field="rp_from_outlet_shape" expression=""/>
+        <default field="rp_from_position_of_connection" expression=""/>
+        <default field="rp_from_remark" expression=""/>
+        <default field="rp_from_last_modification" expression=""/>
+        <default field="rp_from_fk_dataowner" expression=""/>
+        <default field="rp_from_fk_provider" expression=""/>
+        <default field="rp_from_fk_wastewater_networkelement" expression=""/>
+        <default field="rp_to_obj_id" expression=""/>
+        <default field="rp_to_elevation_accuracy" expression=""/>
+        <default field="rp_to_identifier" expression=""/>
+        <default field="rp_to_level" expression=""/>
+        <default field="rp_to_outlet_shape" expression=""/>
+        <default field="rp_to_position_of_connection" expression=""/>
+        <default field="rp_to_remark" expression=""/>
+        <default field="rp_to_last_modification" expression=""/>
+        <default field="rp_to_fk_dataowner" expression=""/>
+        <default field="rp_to_fk_provider" expression=""/>
+        <default field="rp_to_fk_wastewater_networkelement" expression=""/>
+        <default field="me_obj_id" expression=""/>
+        <default field="me_active_zone" expression=""/>
+        <default field="me_identifier" expression=""/>
+        <default field="material_abbr_en" expression=""/>
+        <default field="material_abbr_de" expression=""/>
+        <default field="material_abbr_fr" expression=""/>
+      </defaults>
     </maplayer>
-    <maplayer simplifyAlgorithm="0" minimumScale="1" maximumScale="5000" simplifyDrawingHints="0" readOnly="0" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="1" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="1" maximumScale="5000" simplifyDrawingHints="0" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="1" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
       <extent>
         <xmin>745305.58999999996740371</xmin>
         <ymin>258374.23000000001047738</ymin>
@@ -12215,82 +12267,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="brand" expression=""/>
-        <default field="cover_shape" expression=""/>
-        <default field="diameter" expression=""/>
-        <default field="fastening" expression=""/>
-        <default field="level" expression=""/>
-        <default field="cover_material" expression=""/>
-        <default field="positional_accuracy" expression=""/>
-        <default field="sludge_bucket" expression=""/>
-        <default field="venting" expression=""/>
-        <default field="co_identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="renovation_demand" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="ws_type" expression=""/>
-        <default field="co_obj_id" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="accessibility" expression=""/>
-        <default field="contract_section" expression=""/>
-        <default field="financing" expression=""/>
-        <default field="gross_costs" expression=""/>
-        <default field="inspection_interval" expression=""/>
-        <default field="location_name" expression=""/>
-        <default field="records" expression=""/>
-        <default field="ws_remark" expression=""/>
-        <default field="renovation_necessity" expression=""/>
-        <default field="replacement_value" expression=""/>
-        <default field="rv_base_year" expression=""/>
-        <default field="rv_construction_type" expression=""/>
-        <default field="status" expression=""/>
-        <default field="structure_condition" expression=""/>
-        <default field="subsidies" expression=""/>
-        <default field="year_of_construction" expression=""/>
-        <default field="year_of_replacement" expression=""/>
-        <default field="fk_owner" expression=""/>
-        <default field="fk_operator" expression=""/>
-        <default field="_label" expression=""/>
-        <default field="_depth" expression=""/>
-        <default field="dimension1" expression=""/>
-        <default field="dimension2" expression=""/>
-        <default field="upper_elevation" expression=""/>
-        <default field="manhole_function" expression=""/>
-        <default field="material" expression=""/>
-        <default field="surface_inflow" expression=""/>
-        <default field="channel_usage_current" expression=""/>
-        <default field="channel_function_hierarchic" expression=""/>
-        <default field="manhole_orientation" expression=""/>
-        <default field="bypass" expression=""/>
-        <default field="special_structure_function" expression=""/>
-        <default field="stormwater_tank_arrangement" expression=""/>
-        <default field="highwater_level" expression=""/>
-        <default field="relevance" expression=""/>
-        <default field="terrain_level" expression=""/>
-        <default field="waterlevel_hydraulic" expression=""/>
-        <default field="absorption_capacity" expression=""/>
-        <default field="defects" expression=""/>
-        <default field="distance_to_aquifer" expression=""/>
-        <default field="effective_area" expression=""/>
-        <default field="emergency_spillway" expression=""/>
-        <default field="kind" expression=""/>
-        <default field="labeling" expression=""/>
-        <default field="seepage_utilization" expression=""/>
-        <default field="vehicle_access" expression=""/>
-        <default field="watertightness" expression=""/>
-        <default field="wn_obj_id" expression=""/>
-        <default field="backflow_level" expression=""/>
-        <default field="bottom_level" expression=""/>
-        <default field="wn_identifier" expression=""/>
-        <default field="wn_remark" expression=""/>
-        <default field="wn_last_modification" expression=""/>
-        <default field="wn_fk_dataowner" expression=""/>
-        <default field="wn_fk_provider" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -12417,8 +12393,8 @@ def my_form_open(dialog, layer, feature):
         <edittype widgetv2type="TextEdit" name="_label">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
-        <edittype widgetv2type="TextEdit" name="_depth">
-          <widgetv2config IsMultiline="0" fieldEditable="0" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="Range" name="dimension1">
           <widgetv2config AllowNull="1" fieldEditable="1" Step="1" constraint="" Style="SpinBox" labelOnTop="0" constraintDescription="" Min="0" notNull="0" Max="4000" Suffix=" mm"/>
@@ -14034,7 +14010,7 @@ def my_form_open(dialog, layer, feature):
         <alias field="fk_owner" index="36" name=""/>
         <alias field="fk_operator" index="37" name=""/>
         <alias field="_label" index="38" name=""/>
-        <alias field="_depth" index="39" name="depth"/>
+        <alias field="depth" index="39" name=""/>
         <alias field="dimension1" index="40" name=""/>
         <alias field="dimension2" index="41" name=""/>
         <alias field="upper_elevation" index="42" name=""/>
@@ -14196,7 +14172,7 @@ def my_form_open(dialog, layer, feature):
         </attributeEditorContainer>
         <attributeEditorContainer showLabel="1" visibilityExpressionEnabled="0" visibilityExpression="" name="Wastewater Structure" groupBox="0" columnCount="0">
           <attributeEditorField showLabel="1" index="19" name="accessibility"/>
-          <attributeEditorField showLabel="1" index="39" name="_depth"/>
+          <attributeEditorField showLabel="1" index="-1" name="_depth"/>
           <attributeEditorField showLabel="1" index="20" name="contract_section"/>
           <attributeEditorField showLabel="1" index="21" name="financing"/>
           <attributeEditorField showLabel="1" index="22" name="gross_costs"/>
@@ -14336,8 +14312,84 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="brand" expression=""/>
+        <default field="cover_shape" expression=""/>
+        <default field="diameter" expression=""/>
+        <default field="fastening" expression=""/>
+        <default field="level" expression=""/>
+        <default field="cover_material" expression=""/>
+        <default field="positional_accuracy" expression=""/>
+        <default field="sludge_bucket" expression=""/>
+        <default field="venting" expression=""/>
+        <default field="co_identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="renovation_demand" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="ws_type" expression=""/>
+        <default field="co_obj_id" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="accessibility" expression=""/>
+        <default field="contract_section" expression=""/>
+        <default field="financing" expression=""/>
+        <default field="gross_costs" expression=""/>
+        <default field="inspection_interval" expression=""/>
+        <default field="location_name" expression=""/>
+        <default field="records" expression=""/>
+        <default field="ws_remark" expression=""/>
+        <default field="renovation_necessity" expression=""/>
+        <default field="replacement_value" expression=""/>
+        <default field="rv_base_year" expression=""/>
+        <default field="rv_construction_type" expression=""/>
+        <default field="status" expression=""/>
+        <default field="structure_condition" expression=""/>
+        <default field="subsidies" expression=""/>
+        <default field="year_of_construction" expression=""/>
+        <default field="year_of_replacement" expression=""/>
+        <default field="fk_owner" expression=""/>
+        <default field="fk_operator" expression=""/>
+        <default field="_label" expression=""/>
+        <default field="depth" expression=""/>
+        <default field="dimension1" expression=""/>
+        <default field="dimension2" expression=""/>
+        <default field="upper_elevation" expression=""/>
+        <default field="manhole_function" expression=""/>
+        <default field="material" expression=""/>
+        <default field="surface_inflow" expression=""/>
+        <default field="channel_usage_current" expression=""/>
+        <default field="channel_function_hierarchic" expression=""/>
+        <default field="manhole_orientation" expression=""/>
+        <default field="bypass" expression=""/>
+        <default field="special_structure_function" expression=""/>
+        <default field="stormwater_tank_arrangement" expression=""/>
+        <default field="highwater_level" expression=""/>
+        <default field="relevance" expression=""/>
+        <default field="terrain_level" expression=""/>
+        <default field="waterlevel_hydraulic" expression=""/>
+        <default field="absorption_capacity" expression=""/>
+        <default field="defects" expression=""/>
+        <default field="distance_to_aquifer" expression=""/>
+        <default field="effective_area" expression=""/>
+        <default field="emergency_spillway" expression=""/>
+        <default field="kind" expression=""/>
+        <default field="labeling" expression=""/>
+        <default field="seepage_utilization" expression=""/>
+        <default field="vehicle_access" expression=""/>
+        <default field="watertightness" expression=""/>
+        <default field="wn_obj_id" expression=""/>
+        <default field="backflow_level" expression=""/>
+        <default field="bottom_level" expression=""/>
+        <default field="wn_identifier" expression=""/>
+        <default field="wn_remark" expression=""/>
+        <default field="wn_last_modification" expression=""/>
+        <default field="wn_fk_dataowner" expression=""/>
+        <default field="wn_fk_provider" expression=""/>
+      </defaults>
     </maplayer>
-    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" readOnly="0" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="0" scaleBasedLabelVisibilityFlag="0">
       <id>vw_wastewater_node20150607121012062</id>
       <datasource>service='pg_qgep' key='obj_id' estimatedmetadata=true srid=21781 type=Point table="qgep"."vw_wastewater_node" (situation_geometry) sql=</datasource>
       <keywordList>
@@ -14361,17 +14413,6 @@ def my_form_open(dialog, layer, feature):
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>
-      <defaults>
-        <default field="obj_id" expression=""/>
-        <default field="backflow_level" expression=""/>
-        <default field="bottom_level" expression=""/>
-        <default field="identifier" expression=""/>
-        <default field="remark" expression=""/>
-        <default field="fk_dataowner" expression=""/>
-        <default field="fk_provider" expression=""/>
-        <default field="last_modification" expression=""/>
-        <default field="fk_wastewater_structure" expression=""/>
-      </defaults>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
@@ -14505,6 +14546,17 @@ def my_form_open(dialog, layer, feature):
         <rowstyles/>
         <fieldstyles/>
       </conditionalstyles>
+      <defaults>
+        <default field="obj_id" expression=""/>
+        <default field="backflow_level" expression=""/>
+        <default field="bottom_level" expression=""/>
+        <default field="identifier" expression=""/>
+        <default field="remark" expression=""/>
+        <default field="fk_dataowner" expression=""/>
+        <default field="fk_provider" expression=""/>
+        <default field="last_modification" expression=""/>
+        <default field="fk_wastewater_structure" expression=""/>
+      </defaults>
     </maplayer>
   </projectlayers>
   <properties>
@@ -14641,11 +14693,11 @@ def my_form_open(dialog, layer, feature):
       <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
       <CanvasColorBluePart type="int">255</CanvasColorBluePart>
     </Gui>
+    <WFSLayers type="QStringList"/>
+    <WMSServiceAbstract type="QString"></WMSServiceAbstract>
     <Measure>
       <Ellipsoid type="QString">NONE</Ellipsoid>
     </Measure>
-    <WMSServiceAbstract type="QString"></WMSServiceAbstract>
-    <WFSLayers type="QStringList"/>
     <WFSUrl type="QString"></WFSUrl>
     <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
     <WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
